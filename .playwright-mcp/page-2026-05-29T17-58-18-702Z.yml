@@ -1,0 +1,54 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "R Rassvet" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]: R
+        - generic [ref=e6]: Rassvet
+      - generic [ref=e7]:
+        - generic [ref=e8]: 
+        - searchbox "" [ref=e9]
+      - generic [ref=e10]:
+        - text: 
+        - button "В" [ref=e11] [cursor=pointer]:
+          - generic [ref=e12]: В
+  - generic [ref=e13]:
+    - complementary [ref=e14]:
+      - navigation "Категории" [ref=e15]:
+        - button " Все новости" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+          - text: Все новости
+        - button " Друзья" [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 
+          - text: Друзья
+        - button " Группы" [ref=e20] [cursor=pointer]:
+          - generic [ref=e21]: 
+          - text: Группы
+        - button " Фото" [ref=e22] [cursor=pointer]:
+          - generic [ref=e23]: 
+          - text: Фото
+        - button " Видео" [ref=e24] [cursor=pointer]:
+          - generic [ref=e25]: 
+          - text: Видео
+    - main [ref=e26]:
+      - region "Создать публикацию" [ref=e27]:
+        - generic [ref=e28]:
+          - textbox "Напишите сообщение для ленты..." [ref=e30]
+          - generic [ref=e31]:
+            - generic [ref=e32]:
+              - generic [ref=e33] [cursor=pointer]:
+                - generic [ref=e34]: 
+                - text: Фото
+                - button " Фото" [ref=e35]
+              - generic [ref=e36] [cursor=pointer]:
+                - generic [ref=e37]: 
+                - text: Видео
+                - button " Видео" [ref=e38]
+            - button "Опубликовать" [disabled] [ref=e39]
+      - generic [ref=e40]:
+        - strong [ref=e41]: Лента
+        - generic [ref=e42]: 0 публикаций
+      - generic [ref=e43]:
+        - generic [ref=e44]: 
+        - strong [ref=e45]: Пока нет публикаций
+        - text: Напишите первое сообщение или прикрепите фото/видео.

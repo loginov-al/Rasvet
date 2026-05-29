@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rassvet - Регистрация</title>
+    <link rel="icon" href="/static/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://smartcaptcha.yandexcloud.net/captcha.js" defer></script>
+    <style>
+        :root { --bg:#1e1e1e; --card:#292929; --soft:#202020; --line:#3a3a3a; --text:#f4f4f4; --muted:#9b9b9b; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { min-height: 100vh; background: var(--bg); color: var(--text); font-family: "Montserrat", sans-serif; display: grid; place-items: center; padding: 24px; }
+        .box { width: min(100%, 460px); background: var(--card); border: 1px solid #333; border-radius: 24px; padding: 30px; box-shadow: 0 22px 60px rgba(0,0,0,.32); }
+        .brand { width: 48px; height: 48px; border-radius: 16px; background: #222; border: 1px solid var(--line); display: grid; place-items: center; font-size: 24px; margin-bottom: 18px; }
+        h1 { font-size: 26px; letter-spacing: -.04em; margin-bottom: 8px; }
+        p { color: var(--muted); font-size: 14px; line-height: 1.55; margin-bottom: 22px; }
+        form { display: grid; gap: 14px; }
+        label { display: grid; gap: 8px; color: #cfcfcf; font-size: 13px; font-weight: 700; }
+        input { width: 100%; height: 48px; background: var(--soft); border: 1px solid var(--line); border-radius: 14px; color: var(--text); outline: 0; padding: 0 15px; font: inherit; transition: .2s; }
+        input:focus { border-color: #626262; box-shadow: 0 0 0 4px rgba(255,255,255,.035); }
+        input[disabled] { opacity: .55; cursor: not-allowed; }
+        .verify { background: #242424; border: 1px dashed #4a4a4a; border-radius: 18px; padding: 14px; display: grid; gap: 10px; }
+        .hint { color: var(--muted); font-size: 12px; line-height: 1.45; margin: 0; }
+        .message { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 12px 14px; font-size: 13px; line-height: 1.45; }
+        .captcha { overflow: hidden; border-radius: 16px; }
+        .row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+        .send-code { height: 48px; padding: 0 14px; border-radius: 14px; background: #333; color: #fff; border: 1px solid var(--line); white-space: nowrap; }
+        .submit { height: 50px; border: 0; border-radius: 999px; background: #fff; color: #111; cursor: pointer; font: inherit; font-weight: 800; margin-top: 4px; transition: .2s; }
+        button:hover { transform: translateY(-1px); }
+        .link { text-align: center; margin-top: 18px; margin-bottom: 0; }
+        .link a { color: #fff; font-weight: 700; text-decoration: none; }
+        .link a:hover { text-decoration: underline; }
+        @media (max-width: 480px) { .row { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <main class="box">
+        <div class="brand">☀</div>
+        <h1>Создать аккаунт</h1>
+        <p>Регистрация будет защищена кодом из почты. Сейчас место под отправку и проверку уже подготовлено.</p>
+
+        <form method="post" action="/register">
+            {% if message %}
+                <div class="message">{{ message }}</div>
+            {% endif %}
+
+            <label>
+                Имя
+                <input name="name" type="text" placeholder="Как вас зовут" autocomplete="name" required>
+            </label>
+
+            <label>
+                Почта
+                <input name="email" type="email" placeholder="Введите почту" autocomplete="email" required>
+            </label>
+
+            <label>
+                Пароль
+                <input name="password" type="password" placeholder="Придумайте пароль" autocomplete="new-password" required>
+            </label>
+
+            <div class="verify">
+                <label>
+                    Код подтверждения
+                    <div class="row">
+                        <input name="code" type="text" placeholder="Код из письма" disabled>
+                        <button class="send-code" type="button" disabled>Отправить код</button>
+                    </div>
+                </label>
+                <p class="hint">Позже кнопка отправит код на почту, а аккаунт будет создан только после правильного ввода кода.</p>
+            </div>
+
+            <div class="captcha">
+                <div class="smart-captcha" data-sitekey="{{ smartcaptcha_sitekey }}"></div>
+            </div>
+
+            <button class="submit" type="submit">Подготовить регистрацию</button>
+        </form>
+
+        <p class="link">Уже есть аккаунт? <a href="/login">Войти</a></p>
+    </main>
+</body>
+</html>
